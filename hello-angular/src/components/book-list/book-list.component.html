@@ -1,1 +1,32 @@
-<h1>Our Recommended Books</h1>
+<h1>Our Recommendion of {{books.length}} Books</h1>
+
+
+<button (click)="toggleImages()" >
+    {{showImages?"Hide":"Show"}} Images
+</button>
+
+<table >
+    <thead>
+        <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>
+                <img [hidden]="!showImages"  
+                src="{{book.cover}}" 
+                alt="{{book.title}}"/>
+            </td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.rating}}</td>
+            <td>{{book.price|currency:'INR'}}</td>
+        </tr>
+    </tbody>
+</table>
+

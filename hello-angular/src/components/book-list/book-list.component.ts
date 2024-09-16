@@ -151,4 +151,10 @@ export class BookListComponent {
         }
     ]
 
+    public showImages=true;
+
+    toggleImages(){
+        this.showImages=!this.showImages;
+    }
+
 }
