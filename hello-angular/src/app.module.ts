@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserModule } from "@angular/platform-browser";
-import { AppHomeComponent } from "./app-home.component";
-import { AppHeaderComponent } from "./app-header.component";
-import { AppFooterComponent } from "./app-footer.component";
+import { AppHomeComponent } from "./components/app-home/app-home.component";
+import { AppHeaderComponent } from "./components/app-header/app-header.component";
+import { AppFooterComponent } from "./components/app-footer/app-footer.component";
+import { BookListComponent } from "./components/book-list/book-list.component";
 
 @NgModule({
     imports:[
@@ -13,7 +14,8 @@ import { AppFooterComponent } from "./app-footer.component";
         AppComponent,
         AppHomeComponent,
         AppHeaderComponent,
-        AppFooterComponent
+        AppFooterComponent,
+        BookListComponent
     ],
     bootstrap: [
         AppComponent
