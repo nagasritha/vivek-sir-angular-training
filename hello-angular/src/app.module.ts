@@ -8,11 +8,34 @@ import { BookListComponent } from "./components/book-list/book-list.component";
 import { RangeComponent } from './utils/components/range.component';
 import { FormsModule } from "@angular/forms";
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { RouterModule, Routes } from "@angular/router";
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { BookService } from "./services/book.service";
+import { UserService } from "./services/user.service";
+
+
+const routes : Routes =[
+    {path: '',  pathMatch:'full', redirectTo:'/home'},
+    {path: 'home', component: AppHomeComponent, pathMatch:'full'},
+    
+    //book routes
+    {path:'books', component: BookListComponent},
+
+    {path: 'book/:id', component:BookDetailsComponent},
+    //user routes
+    {path:'login', component: UserLoginComponent},
+    
+    //catch all route
+    {path: '**', component: NotFoundComponent}
+]
+
 
 @NgModule({
     imports:[
         BrowserModule,
-        FormsModule
+        FormsModule,
+        RouterModule.forRoot(routes)
     ],
     declarations:[
         AppComponent,
@@ -21,7 +44,13 @@ import { UserLoginComponent } from './components/user-login/user-login.component
         AppFooterComponent,
         BookListComponent,
         RangeComponent,
-        UserLoginComponent
+        UserLoginComponent,
+        NotFoundComponent,
+        BookDetailsComponent
+    ],
+    providers:[
+        BookService,
+        //UserService  //not registered.
     ],
     bootstrap: [
         AppComponent

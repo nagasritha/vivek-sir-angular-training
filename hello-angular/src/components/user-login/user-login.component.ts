@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'user-login',
@@ -7,16 +8,32 @@ import { Component } from '@angular/core';
 })
 export class UserLoginComponent {
 
+  constructor(private userService:UserService){}
+
   email:string='';
   password:string='';
   rememberMe:boolean=false;
   role:string="";
 
+  error:String="";
+  success:string="";
+
   handleLogin(){
-    console.log('this.email',this.email);
-    console.log('this.password',this.password);
-    console.log('this.rememberMe',this.rememberMe);
-    console.log('this.role',this.role);
+    this.error="";
+    this.success="";
+    if(!this.email){
+      this.error="Missing Email"
+    } else if(!this.password){
+      this.error="Missing Password";
+    } else {
+      const user = this.userService.login({email:this.email, password:this.password})
+      if(user){
+        this.success=`Welcome ${user.name}, to our service`
+      } else{
+        this.error='Invalid Credentials'
+      }
+    
+    }
     
 
   }

@@ -7,7 +7,8 @@ import { Component } from "@angular/core";
             <app-header/>
             <div class='main-content'>
                 
-                <user-login/>         
+                <router-outlet/>
+                        
             </div>
             <app-footer/>
         </div>
