@@ -5,6 +5,7 @@ import { AppHomeComponent } from "./components/app-home/app-home.component";
 import { AppHeaderComponent } from "./components/app-header/app-header.component";
 import { AppFooterComponent } from "./components/app-footer/app-footer.component";
 import { BookListComponent } from "./components/book-list/book-list.component";
+import { RangeComponent } from './utils/components/range.component';
 
 @NgModule({
     imports:[
@@ -15,7 +16,8 @@ import { BookListComponent } from "./components/book-list/book-list.component";
         AppHomeComponent,
         AppHeaderComponent,
         AppFooterComponent,
-        BookListComponent
+        BookListComponent,
+        RangeComponent
     ],
     bootstrap: [
         AppComponent

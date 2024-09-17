@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Book } from "../../models/book.model";
+import { ChangeArgs } from "../../utils/components/range.component";
 
 
 @Component({
@@ -8,6 +9,20 @@ import { Book } from "../../models/book.model";
     styleUrl: './book-list.component.css'
 })
 export class BookListComponent {
+
+    imageHeight:number=120;
+
+    // handleHeightUpdate(updatedValue:number){
+    //     this.imageHeight = updatedValue;
+    // }
+
+
+    handleChange(args:ChangeArgs){
+        //console.log('args',args);
+        //this.imageHeight=args.newValue;
+    }
+
+
 
     public books: Book[] = [
         {
@@ -152,6 +167,15 @@ export class BookListComponent {
     ]
 
     public showImages=true;
+
+    delta=5;
+    max=200;
+    min=80;
+    adjustHeight(direction:number){
+        console.log(`Adjusting height`,this.imageHeight,direction);
+        const newHeight = this.imageHeight+ direction*this.delta;
+        this.imageHeight = Math.max(Math.min(newHeight,this.max),this.min);
+    }
 
     toggleImages(){
         this.showImages=!this.showImages;
