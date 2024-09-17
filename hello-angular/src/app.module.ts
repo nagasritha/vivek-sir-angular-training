@@ -6,10 +6,13 @@ import { AppHeaderComponent } from "./components/app-header/app-header.component
 import { AppFooterComponent } from "./components/app-footer/app-footer.component";
 import { BookListComponent } from "./components/book-list/book-list.component";
 import { RangeComponent } from './utils/components/range.component';
+import { FormsModule } from "@angular/forms";
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 @NgModule({
     imports:[
         BrowserModule,
+        FormsModule
     ],
     declarations:[
         AppComponent,
@@ -17,7 +20,8 @@ import { RangeComponent } from './utils/components/range.component';
         AppHeaderComponent,
         AppFooterComponent,
         BookListComponent,
-        RangeComponent
+        RangeComponent,
+        UserLoginComponent
     ],
     bootstrap: [
         AppComponent

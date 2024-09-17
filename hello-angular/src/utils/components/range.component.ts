@@ -13,11 +13,13 @@ export interface ChangeArgs{
   template: `
     <div>
         <button 
+            class='btn btn-primary btn-sm'
             (click)='_change(-1)'
             [disabled]='value<=min'                     
             >-</button>
         <span>{{value}}</span>
         <button 
+            class='btn btn-primary btn-sm'
             (click)='_change(1)'
             [disabled]='value>=max'
             >+</button>

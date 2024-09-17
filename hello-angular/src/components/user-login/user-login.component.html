@@ -1,0 +1,25 @@
+<h2>Login</h2>
+
+
+<div>
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control" [(ngModel)]="email" />
+
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" [(ngModel)]="password" />
+
+    <div>
+        <label class="form-label">Role</label>
+        <select [(ngModel)]="role">
+            <option>Admin</option>
+            <option>Author</option>
+            <option>User</option>
+        </select>
+    </div>
+
+    <div>
+        Remember Me <input type="checkbox" [(ngModel)]="rememberMe" />
+    </div>
+
+    <button (click)="handleLogin()">Login</button>
+</div>

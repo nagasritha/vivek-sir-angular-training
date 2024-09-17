@@ -1,9 +1,12 @@
 <h1>Our Recommendion of {{books.length}} Books</h1>
 
 
-<button (click)="toggleImages()" >
-    {{showImages?"Hide":"Show"}} Images
-</button>
+<input 
+
+    type="checkbox"
+    [(ngModel)] = 'showImages'
+    
+/> Show Images
 
 <table >
     <thead>
