@@ -6,6 +6,7 @@ import { AppComponent } from './components/app/app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { AppHomeComponent } from './components/app-home/app-home.component';
+import { BooksModule } from '../books/books.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BooksModule
   ],
   providers: [],
   bootstrap: [AppComponent]
