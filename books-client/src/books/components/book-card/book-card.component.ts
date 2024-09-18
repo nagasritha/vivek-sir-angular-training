@@ -11,7 +11,10 @@ import { Book } from '../../models/book';
               <h5 class="card-title">{{book.title}}</h5>
               
               <h4 class="card-text">Rating:  {{book.rating|recommend}}</h4>
-              <p class="card-text">Price: {{book.price|currency:'INR'}}</p>
+             
+              <p [visible]='book.price>0' class=" card-text">
+                Price: {{book.price|currency:'INR'}}
+              </p>
 
               <p class="card-text">{{ book.description | blurb:100 | uppercase}}</p>
 

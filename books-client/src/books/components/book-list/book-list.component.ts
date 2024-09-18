@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
+import { delay, filter, map, tap } from 'rxjs';
 
 @Component({
   selector: 'book-list',
@@ -10,10 +11,22 @@ import { BookService } from '../../services/book.service';
 export class BookListComponent implements OnInit {
 
   books: Book[] = [];
+  loaded:boolean=false;
   constructor(private bookService: BookService) { }
-  ngOnInit(): void {
-    this.books=this.bookService.getBooks();
-    console.log('this.books',this.books);
+
+  async ngOnInit(): Promise<void> {
+    this.bookService
+        .getBooks()
+        //we can configure middleware
+        .pipe(
+          tap((book:any)=> console.log('book',book)),
+          map((book:any)=>({...book,price:0})),
+          filter((book:Book)=> book.price===0)
+        )
+        .subscribe({
+          next: (book:Book)=> this.books.push(book),
+          complete: ()=> this.loaded=true
+        })
     
   }
 

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
+import { delay } from '../../utils/services/delay';
+import { Observable, of, Subscriber } from 'rxjs';
 
 let books: Book[] = [
     {
@@ -45,7 +47,7 @@ let books: Book[] = [
                 "_id": "61ba4b79ed970f8bb2d31437"
             }
         ],
-        "price": 179,
+        "price": 0,
         "authorId": "vivek-dutta-mishra"
     },
     {
@@ -101,7 +103,7 @@ let books: Book[] = [
         "title": "Kane and Abel",
         "author": "Jeffrey Archer",
         "pages": "560",
-        "rating":3,
+        "rating": 3,
         "votes": "2367",
         "description": "They had only one thing in common . . .   William Lowell Kane and Abel Rosnovski: one the son of a Boston millionaire, the other of a penniless Polish immigrant. Two men born on the same day, on opposite sides of the world, their paths destined to cross in the ruthless struggle to build a fortune.   A memorable story, spanning sixty years, of two powerful men linked by an all-consuming hatred, brought together by fate to save – and finally destroy – each other.  ‘The ultimate novel of sibling rivalry’ Dan Brown",
         "tags": [
@@ -113,7 +115,7 @@ let books: Book[] = [
         "series": "",
         "seriesIndex": "",
         "cover": "https://images-na.ssl-images-amazon.com/images/I/81Y8QLPFFlL.jpg",
-        "price": 135,
+        "price": 0,
         "authorId": "jeffrey-archer",
         "reviews": []
     },
@@ -141,28 +143,46 @@ let books: Book[] = [
         "authorId": "chetan-bhagat",
         "reviews": []
     }
-] 
+]
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BookService {
 
-  constructor() { }
+    constructor() { }
 
-  getBooks(): Book[]{
-    return books;
-}
+    // async getBooks() {
+    //     await delay(2000);
+    //     return books;
+    // }
 
-getBookById(id: string): Book|undefined {
-    return books.find(book => book.id === id);
-}
+    getBooks(){
+        let i=0;
+        return new Observable((subscriber:Subscriber<Book>)=>{
+            let iid = setInterval(()=>{
+                if(i===books.length){
+                    clearInterval(iid);
+                    subscriber.complete();
+                    return;
+                }
+                subscriber.next(books[i]);
+                i++;
+            },2000);
+        });
 
-addBook(book:Book){
-    books.push(book);
-}
+        
+    }
 
-removeBook(id:string){
-    books=books.filter(b=>b.id!==id);
-}
+    getBookById(id: string): Book | undefined {
+        return books.find(book => book.id === id);
+    }
+
+    addBook(book: Book) {
+        books.push(book);
+    }
+
+    removeBook(id: string) {
+        books = books.filter(b => b.id !== id);
+    }
 }

@@ -10,7 +10,7 @@ export interface Book{
     rating:string|number;
     votes?:string|number;
     cover:string;
-    price:number|string;
+    price:number;
     authorId:string;
     tags:string[];
     series?:string,
