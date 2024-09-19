@@ -1,1 +1,7 @@
-<p>app-home works!</p>
+
+
+@if(book){
+    <book-card [book]="book"/>
+} @else{
+    <p>Loading...</p>
+}

@@ -19,12 +19,13 @@ export class BookListComponent implements OnInit {
         .getBooks()
         //we can configure middleware
         .pipe(
-          tap((book:any)=> console.log('book',book)),
-          map((book:any)=>({...book,price:0})),
-          filter((book:Book)=> book.price===0)
+          // delay(1000),
+          // tap((book:any)=> console.log('book',book)),
+          // map((book:any)=>({...book,price:0})),
+          // filter((book:Book)=> book.price===0)
         )
         .subscribe({
-          next: (book:Book)=> this.books.push(book),
+          next: (book:any)=> this.books.push(book),
           complete: ()=> this.loaded=true
         })
     

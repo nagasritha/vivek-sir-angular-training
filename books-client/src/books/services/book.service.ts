@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 import { delay } from '../../utils/services/delay';
-import { Observable, of, Subscriber } from 'rxjs';
+import { filter, interval, map, Observable, of, Subscriber, take, tap } from 'rxjs';
+import { timedResult } from '../../utils/services/rx-utils';
 
 let books: Book[] = [
     {
@@ -145,6 +146,17 @@ let books: Book[] = [
     }
 ]
 
+const getBookInSequence=()=>{
+    let count=0;
+    return ()=> books[count++];
+}
+
+const getRandomBook=()=>{
+    const index = Math.ceil(Math.random()*books.length);
+
+    return books[index];
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -157,20 +169,39 @@ export class BookService {
     //     return books;
     // }
 
-    getBooks(){
-        let i=0;
-        return new Observable((subscriber:Subscriber<Book>)=>{
-            let iid = setInterval(()=>{
-                if(i===books.length){
-                    clearInterval(iid);
-                    subscriber.complete();
-                    return;
-                }
-                subscriber.next(books[i]);
-                i++;
-            },2000);
-        });
+    getRecommendedBook(){
+        // return timedResult(getRandomBook,2000)
+        //         .pipe(
+        //             tap(x=>console.log('result',x))
+        //         )
 
+        return interval(2000)
+                .pipe(
+                    //tap(console.log),
+                    map(()=>Math.floor(Math.random()*(100))),
+                    tap((index)=>console.log('random',index)),
+                    //filter( index=> index<books.length),
+                    map(index=> index%books.length),
+                    tap(index=>console.log('resovled index',index)),
+                    map(index=>books[index]),
+                    tap(console.log)
+
+
+                )
+
+    }
+
+    getBooks(){
+        // let i=0;
+        // return timedResult(getBookInSequence(),1000);
+
+        return interval(1000)
+                .pipe(
+                    tap(console.log), //original value
+                    map((x:number)=> books[x]), //converted to books
+                    tap(console.log), //converted value
+                    take(books.length) //stop after all books have been served
+                )
         
     }
 

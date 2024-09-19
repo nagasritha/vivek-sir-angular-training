@@ -34,7 +34,8 @@ const routes:Routes=[
     // BookListComponent,
     // BookAddComponent,
     // BookDetailsComponent
-    RouterModule
+    RouterModule,
+    BookCardComponent,
     
   ]
 })
