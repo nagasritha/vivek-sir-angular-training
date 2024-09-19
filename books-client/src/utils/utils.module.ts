@@ -5,6 +5,7 @@ import { StarsPipe } from './pipes/stars.pipe';
 import { BlurbPipe } from './pipes/blurb.pipe';
 import { VisibleDirective } from './directives/visible.directive';
 import { ForEachDirective } from './directives/for-each.directive';
+import { FieldSetComponent } from './components/field-set/field-set.component';
 
 
 
@@ -14,16 +15,19 @@ import { ForEachDirective } from './directives/for-each.directive';
     StarsPipe,
     BlurbPipe,
     VisibleDirective,
-    ForEachDirective
+    ForEachDirective,
+    FieldSetComponent
   ],
   imports: [
     CommonModule
   ],
   exports:[
+    NotFoundComponent,
     VisibleDirective,
     StarsPipe,
     BlurbPipe,
-    ForEachDirective
+    ForEachDirective,
+    FieldSetComponent
   ]
 })
 export class UtilsModule { }

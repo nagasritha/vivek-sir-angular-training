@@ -1,0 +1,14 @@
+@if(errorCode===0){
+    <h4 class='text-danger'>Error Reaching Server</h4>
+    <button class="btn btn-primary" (click)='getAllUsers()'>Retry</button>
+} @else if(errorCode===401 || errorCode===403){
+    <h4 class='text-danger'>Unauthorized {{errorCode}}</h4>
+    <button class="btn btn-primary" [routerLink]="['/login','?returnPath=/admin/users']">Login To See the User List</button>
+} @else {
+
+    @for(user of users; track user.email){
+        <p>{{user.name}}</p>
+    }@empty {
+        <h4 class='text-primary'>Loading...</h4>        
+    }
+}

@@ -7,7 +7,7 @@ import { AppHomeComponent } from './components/app-home/app-home.component';
 
 const routes: Routes = [
 
-  {path:'', pathMatch:'full', redirectTo:'/home'},
+  {path:'', pathMatch:'full', redirectTo:'/authors'},
   {path:'home', component: AppHomeComponent},
   {path:'books', loadChildren:()=>import('../books/books.module').then(m=>m.BooksModule)},
   {path:'authors', loadChildren:()=>import('../authors/authors.module').then(m=>m.AuthorsModule)},

@@ -11,11 +11,12 @@ import { filter } from 'rxjs';
 export class AppHomeComponent {
 
   constructor(private bookService: BookService){}
+  subscriber:any;
   
   book?:Book
   ngOnInit(){
     console.log('App Home Component initialized');
-    this.bookService
+    this.subscriber=this.bookService
         .getRecommendedBook()
         .pipe(
           //filter(b=> b.author==='JK Rowling')
@@ -24,6 +25,10 @@ export class AppHomeComponent {
           next: (book:any)=>this.book=book
         });
 
+  }
+
+  ngOnDestroy(){
+    this.subscriber.unsubscribe();
   }
 
 }

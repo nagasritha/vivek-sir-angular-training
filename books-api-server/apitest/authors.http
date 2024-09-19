@@ -42,7 +42,8 @@ GET http://localhost:8000/api/authors/vivek-dutta-mishra/books
 GET http://localhost:8000/api/authors/invalid-id
 
 ### delete book with invalid id
-DELETE http://localhost:8000/api/authors/invalid-id
+DELETE http://localhost:8000/api/authors/t3
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtaXRAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJpYXQiOjE3MjY3Mzc1OTEsImV4cCI6MTcyNjc0MTE5MX0.ByRZ9UuQM3vAtLYgZtSim0pJqI9OHaKJjYUEoyx0EvM
 
 ### Operatiosn against a new author alexandre-dumas
 

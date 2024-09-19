@@ -4,7 +4,6 @@ GET http://localhost:8000/api/users
 ### GET ALL USERS WITHOUT NORMAL HEADER
 
 GET http://localhost:8000/api/users
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoaXZhbnNoaUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwicm9vdCJdLCJpYXQiOjE3MjYxMzExMjEsImV4cCI6MTcyNjEzNDcyMX0.NpAJk2dhQdG_6QLAfYDWfA0xu4W8Phcuhz0U_K3bv-k
 ### GET ALL USERS WITHOUT ADMIN HEADER
 
 GET http://localhost:8000/api/users
@@ -32,6 +31,17 @@ CONTENT-TYPE: application/json
     "email":"sanjay@gmail.com",
     "password":"p@ss#1",
     "photo":"https://randomuser.me/api/portraits/men/40.jpg",
+    "roles":["admin","author"]
+}
+### REGISTER NORMAL USER
+POST http://localhost:8000/api/users
+CONTENT-TYPE: application/json
+
+{
+    "name":"Amit Singh",
+    "email":"amit@gmail.com",
+    "password":"p@ss#1",
+    "photo":"https://randomuser.me/api/portraits/men/44.jpg",
     "roles":["admin","author"]
 }
 
