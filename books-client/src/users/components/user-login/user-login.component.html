@@ -1,15 +1,17 @@
-
-
+ 
+<h4 class="text-danger">{{message}}</h4>
 <field-set title="User Login">
 
-    <form #loginForm="ngForm" (ngSubmit)="handleLogin()" novalidate >
+   
+    <form  #loginForm="ngForm" (ngSubmit)="handleLogin()" novalidate >
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
 
 
             <input type="email" 
-                name="email" #email="ngModel" 
+                name="email"  
                 [(ngModel)]="loginInfo.email"
+                #email="ngModel"
                 required email
                 class="form-control"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -37,7 +39,7 @@
         <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Submit</button>
 
         
-
+       
         <p class='text-danger'>{{error}}</p>
         <p class='text-success'>{{success}}</p>
 

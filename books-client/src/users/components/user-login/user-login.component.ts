@@ -20,19 +20,35 @@ export class UserLoginComponent {
   success?:string;
   error?:string;
   loginInfo: LoginInfo={
-    email:'',
-    password:''
+    email:'amit@gmail.com',
+    password:'p@ss#1'
   }
 
   subscriber:any;
   errorCode?:number;
+  message=''
+
+  ngOnInit(){
+    //console.log('this.route.snapshot.queryParams',this.route.snapshot.queryParams);
+    
+    //this.message= this.route.snapshot.queryParams['message'] || '';
+
+    this.route.queryParams.subscribe({next: q=> this.message=q['message']});
+
+  }
 
   handleLogin(){
     // console.log('successfully submitted', 
     //   this.loginInfo);
+
+    
+
     this.success='logging...';
     this.error='';
     this.errorCode=undefined;
+    this.message='';
+
+    
 
     this.subscriber=this.userService
                        .login(this.loginInfo)

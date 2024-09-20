@@ -13,6 +13,7 @@ interface Link{
 })
 export class AppHeaderComponent {
 
+  
   @Input() title:string=""
 
   @Input() links:Link[]=[
@@ -34,5 +35,6 @@ export class AppHeaderComponent {
     },
 
   ];
+
 
 }

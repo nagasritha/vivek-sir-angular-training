@@ -8,6 +8,7 @@ import { AppFooterComponent } from './components/app-footer/app-footer.component
 import { AppHomeComponent } from './components/app-home/app-home.component';
 import { BooksModule } from '../books/books.module';
 import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { UsersModule } from '../users/users.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@an
     BrowserModule,
     AppRoutingModule,
     BooksModule,
+    UsersModule
    // HttpClientModule
   ],
   providers: [

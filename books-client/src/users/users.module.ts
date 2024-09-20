@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { FormsModule } from '@angular/forms';
 import { UtilsModule } from '../utils/utils.module';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 const routes:Routes=[
   {path:"login", component: UserLoginComponent},
@@ -24,10 +25,12 @@ const routes:Routes=[
   declarations: [
     UserLoginComponent,
     UserRegisterComponent,
-    UserListComponent
+    UserListComponent,
+    UserMenuComponent
   ],
   exports:[
     RouterModule,
+    UserMenuComponent,
   ]
   
 })
